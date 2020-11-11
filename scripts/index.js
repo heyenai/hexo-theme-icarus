@@ -28,13 +28,5 @@ require('../include/config')(hexo);
  */
 require('../include/register')(hexo);
 
-//
-// Hexo 路由控制
-//
-hexo.extend.generator.register('blog_index', function(locals){
-  return {
-    path: 'index.html',
-    data: locals,
-    layout: 'archive'
-  }
-});
+// 魔改
+require('./blog')(hexo);

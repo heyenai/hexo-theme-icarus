@@ -14,6 +14,8 @@ module.exports = class extends Component {
         const language = page.lang || page.language || config.language;
         const columnCount = Widgets.getColumnCount(config.widgets);
 
+        helper.url_for = helper.blogcdn;
+
         return <html lang={language ? language.substr(0, 2) : ''}>
             <Head site={site} config={config} helper={helper} page={page} />
             <body class={`is-${columnCount}-column`}>
