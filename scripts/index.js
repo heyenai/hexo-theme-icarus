@@ -27,3 +27,14 @@ require('../include/config')(hexo);
  * Register Hexo extensions and remove Hexo filters that could cause OOM
  */
 require('../include/register')(hexo);
+
+//
+// Hexo 路由控制
+//
+hexo.extend.generator.register('blog_index', function(locals){
+  return {
+    path: 'index.html',
+    data: locals,
+    layout: 'archive'
+  }
+});

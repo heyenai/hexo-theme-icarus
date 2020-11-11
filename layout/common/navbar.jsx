@@ -41,13 +41,38 @@ class Navbar extends Component {
 
         return <nav class="navbar navbar-main">
             <div class="container">
-                <div class="navbar-brand justify-content-center">
+                {/* <div class="navbar-brand justify-content-center">
                     <a class="navbar-item navbar-logo" href={siteUrl}>
                         {navbarLogo}
                     </a>
-                </div>
+                </div> */}
                 <div class="navbar-menu">
-                    {Object.keys(menu).length ? <div class="navbar-start">
+                    <div class="avatar justify-content-center">
+                        <img src={logoUrl} alt={siteTitle} />
+                    </div>
+                    <div class="site-title">
+                        <span class="logo1">&lt;</span>
+                        <span class="logo2">/</span>
+                        <span class="logo3">#</span>
+                        <a class="site-name" href={siteUrl} title={siteTitle}> {siteTitle} </a>
+                        <span class="logo3">#</span>
+                        <span class="logo2">/</span>
+                        <span class="logo1">&gt;</span>
+                    </div>
+                    <div class="social">
+                        {Object.keys(links).length ? <Fragment>
+                            {Object.keys(links).map(name => {
+                                const link = links[name];
+                                return <a class="navbar-item" target="_blank" rel="noopener" title={name} href={link.url}>
+                                    {link.icon ? <i class={link.icon}></i> : name}
+                                </a>;
+                            })}
+                        </Fragment> : null}
+                        {showSearch ? <a class="navbar-item search" title={searchTitle} href="javascript:;">
+                            <i class="fas fa-search"></i>
+                        </a> : null}
+                    </div>
+                    {/* {Object.keys(menu).length ? <div class="navbar-start">
                         {Object.keys(menu).map(name => {
                             const item = menu[name];
                             return <a class={classname({ 'navbar-item': true, 'is-active': item.active })} href={item.url}>{name}</a>;
@@ -68,7 +93,7 @@ class Navbar extends Component {
                         {showSearch ? <a class="navbar-item search" title={searchTitle} href="javascript:;">
                             <i class="fas fa-search"></i>
                         </a> : null}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </nav>;

@@ -30,19 +30,19 @@ class Footer extends Component {
             <div class="container">
                 <div class="level">
                     <div class="level-start">
-                        <a class="footer-logo is-block mb-2" href={siteUrl}>
+                        {/* <a class="footer-logo is-block mb-2" href={siteUrl}>
                             {footerLogo}
-                        </a>
+                        </a> */}
                         <p class="is-size-7">
-                            <span dangerouslySetInnerHTML={{ __html: `&copy; ${siteYear} ${author || siteTitle}` }}></span>
-                            &nbsp;&nbsp;Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>&nbsp;&&nbsp;
-                            <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>
+                            &ensp;{siteYear} <a href={siteUrl}>{author || siteTitle}</a>
+                            &ensp;&#183;&ensp;Theme by <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                             {showVisitorCounter ? <br /> : null}
                             {showVisitorCounter ? <span id="busuanzi_container_site_uv"
                                 dangerouslySetInnerHTML={{ __html: visitorCounterTitle }}></span> : null}
                         </p>
                     </div>
-                    <div class="level-end">
+                    {/* <div class="level-end">
                         {Object.keys(links).length ? <div class="field has-addons">
                             {Object.keys(links).map(name => {
                                 const link = links[name];
@@ -53,7 +53,7 @@ class Footer extends Component {
                                 </p>;
                             })}
                         </div> : null}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </footer>;

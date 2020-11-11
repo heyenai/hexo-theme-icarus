@@ -8,14 +8,15 @@ const Plugins = require('./plugins');
 function getPageTitle(page, siteTitle, helper) {
     let title = page.title;
 
-    if (helper.is_archive()) {
+    {/* if (helper.is_archive()) {
         title = helper._p('common.archive', Infinity);
         if (helper.is_month()) {
             title += ': ' + page.year + '/' + page.month;
         } else if (helper.is_year()) {
             title += ': ' + page.year;
         }
-    } else if (helper.is_category()) {
+    } else */}
+    if (helper.is_category()) {
         title = helper._p('common.category', 1) + ': ' + page.category;
     } else if (helper.is_tag()) {
         title = helper._p('common.tag', 1) + ': ' + page.tag;

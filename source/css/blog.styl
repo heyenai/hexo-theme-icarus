@@ -1,0 +1,73 @@
+body, button, input, select, textarea
+	font-family: serif
+
+.column-main
+	margin: 0px auto;
+
+	.card
+		.timeline
+			margin-left: unset
+			border-left: none
+
+		.media
+			&:before
+				display: none
+			&:not(:last-child)
+				margin-bottom: unset
+
+.tag
+	&:not(body)
+		&.is-primary
+			font-weight: 600
+
+article
+	&.media
+		.media-content
+			display: flex
+			justify-content: space-between
+			flex-direction: row-reverse
+
+footer
+	.level-start
+		margin: 0px auto
+		text-align: center
+
+.navbar
+	.navbar-menu
+		display: flex
+		flex-direction: column
+		align-items: center
+
+		.avatar
+			height: 100px
+			width: 100px
+			border-radius: 100%
+			margin-top: 1.25rem
+			overflow: hidden
+
+		.site-title
+			font-size: 1.5em
+			font-weight: 600
+			padding: 1.25rem
+			padding-bottom: 0
+
+			.logo1
+				color: #888888
+
+			.logo2
+				color: #6d9ee7
+
+			.logo3
+				color: #be8355
+
+			a
+				color: #3b3b3c
+
+		.social
+			display: flex
+
+a.navbar-item
+	color: #868e96
+
+	&:hover
+		background-color: unset
