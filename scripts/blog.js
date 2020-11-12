@@ -20,8 +20,13 @@ module.exports = hexo => {
             repo
         } = typeof this.config.blogcdn === 'object' ? this.config.blogcdn : {};
 
-        if (!cdn) {
+        if (!cdn || !filename || filename == '/') {
             return filename;
+        }
+
+        const full_url = RegExp("^((?:[a-z]+:)?\\/\\/|data:image\\/)", "i");
+        if (full_url.test(filename)) {
+            return filename
         }
 
         const url_for = hexo.extend.helper.get('url_for').bind(this);
