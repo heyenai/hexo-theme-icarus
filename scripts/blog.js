@@ -2,10 +2,15 @@
 module.exports = hexo => {
     // Hexo 路由控制
     hexo.extend.generator.register('blog_index', function(locals){
+      const config = this.config;
+      const amount = config.index_generator.amount ? config.index_generator.amount : 8;
+
+      locals.posts = locals.posts.sort(config.index_generator.order_by || '-date').slice(0, amount);
+
       return {
-        path: 'index.html',
+        path: '/',
         data: locals,
-        layout: 'archive'
+        layout: 'blog_index'
       }
     });
 

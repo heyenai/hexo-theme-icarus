@@ -26,7 +26,7 @@ module.exports = class extends Component {
                             return <ArticleMedia
                                 url={url_for(post.link || post.path)}
                                 title={post.title}
-                                date={date(post.date)}
+                                date={date(post.date, 'Mo Do')}
                                 dateXml={date_xml(post.date)}
                                 categories={categories}
                                 thumbnail={post.thumbnail ? url_for(post.thumbnail) : null} />;
@@ -50,14 +50,9 @@ module.exports = class extends Component {
 
         return <Fragment>
             {articleList}
-            {page.total > 1 ? <Paginator
-                current={page.current}
-                total={page.total}
-                baseUrl={page.base}
-                path={config.pagination_dir}
-                urlFor={url_for}
-                prevTitle={__('common.prev')}
-                nextTitle={__('common.next')} /> : null}
+            <nav class="more">
+                <a href={url_for('/archives')}>More&ensp;<i class="fa fa-angle-double-right"></i></a>
+            </nav>
         </Fragment>;
     }
 };
