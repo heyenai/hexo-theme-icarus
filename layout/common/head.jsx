@@ -32,7 +32,7 @@ function getPageTitle(page, siteTitle, helper) {
 module.exports = class extends Component {
     render() {
         const { site, config, helper, page } = this.props;
-        const { url_for, cdn, fontcdn, iconcdn, is_post } = helper;
+        const { url_for, cdn, fontcdn, iconcdn, blogcdn, is_post } = helper;
         const {
             url,
             head = {},
@@ -152,11 +152,11 @@ module.exports = class extends Component {
 
             {canonical_url ? <link rel="canonical" href={canonical_url} /> : null}
             {rss ? <link rel="alternate" href={url_for(rss)} title={config.title} type="application/atom+xml" /> : null}
-            {favicon ? <link rel="icon" href={url_for(favicon)} /> : null}
+            {favicon ? <link rel="icon" href={blogcdn(url_for(favicon))} /> : null}
             <link rel="stylesheet" href={iconcdn()} />
             {hlTheme ? <link rel="stylesheet" href={cdn('highlight.js', '9.12.0', 'styles/' + hlTheme + '.css')} /> : null}
             <link rel="stylesheet" href={fontCssUrl[variant]} />
-            <link rel="stylesheet" href={url_for('/css/' + variant + '.css')} />
+            <link rel="stylesheet" href={blogcdn(url_for('/css/' + variant + '.css'))} />
             <Plugins site={site} config={config} helper={helper} page={page} head={true} />
 
             {adsenseClientId ? <script data-ad-client={adsenseClientId}

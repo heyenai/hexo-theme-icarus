@@ -102,7 +102,7 @@ class Navbar extends Component {
 
 module.exports = cacheComponent(Navbar, 'common.navbar', props => {
     const { config, helper, page } = props;
-    const { url_for, _p, __ } = helper;
+    const { url_for, _p, __, blogcdn } = helper;
     const { logo, title, navbar, widgets, search } = config;
 
     const hasTocWidget = Array.isArray(widgets) && widgets.find(widget => widget.type === 'toc');
@@ -132,7 +132,7 @@ module.exports = cacheComponent(Navbar, 'common.navbar', props => {
 
     return {
         logo,
-        logoUrl: url_for(logo),
+        logoUrl: blogcdn(url_for(logo)),
         siteUrl: url_for('/'),
         siteTitle: title,
         menu,

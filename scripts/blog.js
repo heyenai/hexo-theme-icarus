@@ -15,17 +15,21 @@ module.exports = hexo => {
     });
 
     // 辅助函数
-    // const url_for = this.url_for;
+    hexo.extend.helper.register('blogcdn', function (option) {
+        if (typeof option === 'string') {
+            option = {
+                filename: option
+            }
+        }
 
-    // console.log(typeof url_for)
-    hexo.extend.helper.register('blogcdn', function (filename) {
-        const {
+        let {
             cdn = 'https://cdn.jsdelivr.net/gh/${ repo }@${ version }/${ filename }',
-            version,
-            repo
-        } = typeof this.config.blogcdn === 'object' ? this.config.blogcdn : {};
+            repo = 'repo',
+            version = 'version',
+            filename = 'filename'
+        } = Object.assign(typeof this.config.blogcdn === 'object' ? this.config.blogcdn : {}, option);
 
-        if (!cdn || !filename || filename == '/') {
+        if (!filename || filename == '/') {
             return filename;
         }
 
@@ -34,9 +38,9 @@ module.exports = hexo => {
             return filename
         }
 
-        const url_for = hexo.extend.helper.get('url_for').bind(this);
-        
-        filename = url_for(filename);
+        // const url_for = hexo.extend.helper.get('url_for').bind(this);
+        // filename = url_for(filename);
+
         if (filename.startsWith('/')) {
             filename = filename.substr(1);
         }

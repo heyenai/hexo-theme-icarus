@@ -4,7 +4,7 @@ const Plugins = require('./plugins');
 module.exports = class extends Component {
     render() {
         const { site, config, helper, page } = this.props;
-        const { url_for, cdn } = helper;
+        const { url_for, cdn, blogcdn } = helper;
         const { article } = config;
         const language = page.lang || page.language || config.language || 'en';
 
@@ -34,9 +34,9 @@ module.exports = class extends Component {
             {clipboard && <script src={cdn('clipboard', '2.0.4', 'dist/clipboard.min.js')} async></script>}
             <script dangerouslySetInnerHTML={{ __html: `moment.locale("${language}");` }}></script>
             <script dangerouslySetInnerHTML={{ __html: embeddedConfig }}></script>
-            <script src={url_for('/js/column.js')}></script>
+            <script src={blogcdn(url_for('/js/column.js'))}></script>
             <Plugins site={site} config={config} page={page} helper={helper} head={false} />
-            <script src={url_for('/js/main.js')} defer></script>
+            <script src={blogcdn(url_for('/js/main.js'))} defer></script>
         </Fragment>;
     }
 };
